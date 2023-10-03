@@ -50,7 +50,6 @@ bool IfFileExist(string FileName)
 string GetDataFromFileToString(string FileName)
 {
     string Data = "";
-    FileName = (FileName[0] == '/' ? "" : GetUserHomeFolder() + "/") + FileName;
     FILE *FilePointer = fopen(FileName.c_str(), "r");
     if (FilePointer == NULL)
         TRIGGER_ERROR("Cannot open input file: " + FileName);
@@ -63,7 +62,6 @@ string GetDataFromFileToString(string FileName)
 }
 void SetDataFromStringToFile(string FileName, string Data)
 {
-    FileName = (FileName[0] == '/' ? "" : GetUserHomeFolder() + "/") + FileName;
     FILE *FilePointer = fopen(FileName.c_str(), "w");
     if (FilePointer == NULL)
         TRIGGER_ERROR("Cannot open output file: " + FileName);
