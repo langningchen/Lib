@@ -1,6 +1,4 @@
-#ifndef CURL_HPP
-#define CURL_HPP
-
+#pragma once
 #include <iostream>
 #include <fstream>
 #include <curl/curl.h>
@@ -44,5 +42,3 @@ string URLDecode(string Input);
 string HTMLEncode(string Data);
 string HTMLDecode(string Data);
 string FindLocation();
-
-#endif

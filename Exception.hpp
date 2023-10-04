@@ -1,8 +1,7 @@
-#ifndef EXCEPTION_HPP
-#define EXCEPTION_HPP
+#pragma once
+
 #include <stdexcept>
 #include <string>
-#include <execinfo.h>
 #include <iostream>
 using namespace std;
 
@@ -74,4 +73,3 @@ public:
     string what() const;
     ~CLNException();
 };
-#endif

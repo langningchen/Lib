@@ -1,11 +1,11 @@
-#ifndef STRING_OPERATION_HPP
-#define STRING_OPERATION_HPP
+#pragma once
 
 #include <string>
 #include <fstream>
 #include <string.h>
 #include <unistd.h>
 #include <vector>
+#include <time.h>
 #include <assert.h>
 #include "Exception.hpp"
 #ifdef TEST
@@ -31,5 +31,3 @@ void SetDataFromStringToFile(string FileName, string Data);
 string FixString(string Data);
 void OutputSummary(string Data);
 string GetUserHomeFolder();
-
-#endif
