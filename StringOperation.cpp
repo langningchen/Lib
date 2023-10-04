@@ -41,7 +41,7 @@ vector<string> SpiltString(string Input, string Separator)
 }
 bool IfFileExist(string FileName)
 {
-    ifstream InputFileStream((FileName[0] == '/' ? "" : GetUserHomeFolder() + "/") + FileName);
+    ifstream InputFileStream(FileName);
     if (InputFileStream.bad() || !InputFileStream.is_open())
         return false;
     InputFileStream.close();
@@ -83,16 +83,7 @@ string FixString(string Data)
         Data.erase(Data.size() - 1, 1);
     return Data;
 }
-void OutputSummary(string Data)
-{
-    Data = StringReplaceAll(Data, "\n", "\\n");
-    Data = StringReplaceAll(Data, "\t", "\\t");
-    Data = StringReplaceAll(Data, "\r", "\\r");
-    Data = StringReplaceAllNoLoop(Data, "`", "\\`");
-    Data = StringReplaceAllNoLoop(Data, "\"", "\\\"");
-    if (system(string("echo \"" + Data + "\" >> $GITHUB_STEP_SUMMARY").c_str()))
-        TRIGGER_ERROR("Output Github summary failed");
-}
+#ifndef _WIN32
 string GetUserHomeFolder()
 {
     char *HomeFolder = getenv("HOME");
@@ -100,3 +91,4 @@ string GetUserHomeFolder()
         TRIGGER_ERROR("Cannot get user home folder");
     return HomeFolder;
 }
+#endif
